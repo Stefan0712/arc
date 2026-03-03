@@ -1,0 +1,608 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- General --- */
+  --font-theme: var(--font-main);
+  --color-app: var(--bg-app);
+  --color-header-title: var(--text-header-title);
+  --color-header-subtitle: var(--text-header-subtitle);
+
+  /* Custom Colors */
+  --radius-cards: var(--border-radius-cards);
+  --radius-input: var(--border-radius-input);
+  --radius-button: var(--border-radius-button);
+  --color-accent: var(--text-accent);
+
+  
+  --color-section-title: var(--text-section-title);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-on-accent: var(--text-on-accent);
+  --color-bg-accent: var(--bg-accent);
+  --color-bg-primary: var(--bg-primary);
+  --color-input: var(--bg-input);
+  --color-text-input: var(--text-input);
+  --color-input-border: var(--border-input);
+
+  /* --- Navigation --- */
+  --color-nav: var(--bg-nav);
+  --color-nav-border: var(--border-nav);
+  --color-nav-text: var(--text-nav);
+  --color-nav-text-selected: var(--text-nav-selected);
+  --color-nav-button: var(--bg-nav-button);
+  --color-nav-button-selected: var(--bg-nav-button-selected);
+
+  /* Notifications */
+  --color-notification-success: var(--bg-notification-success);
+  --color-notification-success-text: var(--text-notification-success);
+  --color-notification-error: var(--bg-notification-error);
+  --color-notification-error-text: var(--text-notification-error);
+  --color-notification-info: var(--bg-notification-info);
+  --color-notification-info-text: var(--text-notification-info);
+  --color-notification-border: var(--border-notification);
+
+  /* --- Dashboard --- */
+  --color-dashboard-btn: var(--bg-dashboard-btn);
+
+  /* --- Dashboard Habit Card --- */
+  --color-dashboard-card: var(--bg-dashboard-card);
+  --color-dashboard-icon-bg: var(--bg-dashboard-icon-background);
+  --color-dashboard-icon-color: var(--text-dashboard-icon-color);
+  --color-dashboard-habit-title: var(--text-dashboard-habit-title);
+  --color-dashboard-habit-subtitle: var(--text-dashboard-habit-subtitle);
+  --color-dashboard-habit-progress: var(--bg-dashboard-habit-progress-background);
+  --color-dashboard-habit-button: var(--text-dashboard-habit-button);
+  --color-dashboard-habit-base: var(--border-dashboard-habit-base);
+  --color-dashboard-habit-skipped: var(--border-dashboard-habit-skipped);
+  --color-dashboard-habit-completed: var(--border-dashboard-habit-completed);
+  --radius-dashboard-habit: var(--border-radius-dashboard-habit);
+  --color-dashboard-habit-skipped-bg: var(--bg-dashboard-habit-skipped);
+  --color-dashboard-habit-completed-bg: var(--bg-dashboard-habit-completed);
+
+  /* --- Numpad Modal --- */
+  --color-numpad: var(--bg-numpad);
+  --color-numpad-header: var(--text-numpad-header);
+  --color-numpad-date: var(--bg-numpad-date-selector);
+  --color-numpad-date-text: var(--text-numpad-date-selector);
+  --color-numpad-value: var(--bg-numpad-value);
+  --color-numpad-value-text: var(--text-numpad-value);
+  --color-numpad-value-border: var(--border-numpad-value);
+  --color-numpad-button: var(--bg-numpad-button);
+  --color-numpad-button-text: var(--text-numpad-button);
+  --color-numpad-button-border: var(--border-numpad-button);
+  
+  /* Button Surfaces */
+  --color-bg-button: var(--bg-button);
+  --color-bg-button-disabled: var(--bg-button-disabled);
+  --color-bg-button-focus: var(--bg-button-focus);
+
+  /* Button Typography */
+  --color-text-button: var(--text-button);
+  --color-text-button-disabled: var(--text-button-disabled);
+  --color-text-button-focus: var(--text-button-focus);
+
+  /* Button Borders */
+  --color-border-button: var(--border-button);
+  --color-border-button-active: var(--border-button-active);
+  --color-border-button-disabled: var(--border-button-disabled);
+
+  /* Skip Action */
+  --color-skip-border: var(--border-skip-btn);
+  --color-skip-border-disabled: var(--border-skip-btn-disabled);
+  --color-skip-border-enabled: var(--border-skip-enabled);
+  --color-skip-text: var(--text-skip);
+  --color-skip-text-disabled: var(--text-ski-disabled);
+  --color-skip-text-enabled: var(--text-skip-enabled);
+  --color-skip: var(--bg-skip);
+  --color-skip-disabled: var(--bg-skip-disabled);
+  --color-skip-enabled: var(--bg-skip-enabled);
+  
+  /* Save Action */
+  --color-save-text: var(--text-save);
+  --color-save-text-enabled: var(--text-save-enabled);
+  --color-save-text-disabled: var(--text-save-disabled);
+  --color-save-border: var(--border-save);
+  --color-save-border-enabled: var(--border-save-enabled);
+  --color-save-border-disabled: var(--border-save-disabled);
+  --color-save: var(--bg-save);
+  --color-save-disabled: var(--bg-save-disabled);
+  --color-save-enabled: var(--bg-save-enabled);
+
+  /* --- Boolean Modal --- */
+  --color-boolean: var(--bg-boolean);
+  --color-boolean-header: var(--text-boolean-header);
+  --color-boolean-date-border: var(--border-boolean-date-selector);
+  --color-boolean-date: var(--bg-boolean-date-selector);
+  --color-boolean-date-text: var(--text-boolean-date-selector);
+
+  --color-boolean-yes-border: var(--border-boolean-yes-btn);
+  --color-boolean-yes: var(--bg-boolean-yes-btn);
+  --color-boolean-yes-text: var(--text-boolean-yes-btn);
+  --color-boolean-yes-active: var(--bg-boolean-yes-btn-active);
+
+  --color-boolean-no-border: var(--border-boolean-no-btn);
+  --color-boolean-no: var(--bg-boolean-no-btn);
+  --color-boolean-no-text: var(--text-boolean-no-btn);
+  --color-boolean-no-active: var(--bg-boolean-no-btn-active);
+
+  --color-boolean-skip-border: var(--border-boolean-skip-btn);
+  --color-boolean-skip: var(--bg-boolean-skip-btn);
+  --color-boolean-skip-text: var(--text-boolean-skip-btn);
+  --color-boolean-skip-active: var(--bg-boolean-skip-btn-active);
+
+  --color-boolean-save: var(--bg-boolean-save);
+  --color-boolean-save-border: var(--border-boolean-save);
+  --color-boolean-save-text: var(--text-boolean-save);
+
+  /* --- Stats Page --- */
+  --color-stats-toggle: var(--bg-stats-toggle);
+  --color-stats-toggle-border: var(--border-stats-toggle);
+  --color-stats-button: var(--bg-stats-button);
+  --color-stats-button-selected: var(--bg-stats-button-selected);
+  --color-stats-button-text: var(--text-stats-button);
+  --color-stats-button-text-selected: var(--text-stats-button-selected);
+  --color-stats-date-border: var(--border-stats-date);
+  --color-stats-date: var(--bg-stats-date);
+  --color-stats-date-text: var(--text-stats-date);
+  --color-stats-general-card: var(--bg-stats-general-card);
+  --color-stats-general-card-text: var(--text-stats-general-card);
+  --color-stats-general-card-border: var(--border-stats-general-card);
+  --color-habit-stats-card: var(--bg-habit-stats-card);
+  --color-habit-stats-card-text: var(--text-habit-stats-card);
+  --color-habit-stats-card-border: var(--border-habit-stats-card);
+  --color-habit-circle: var(--bg-habit-circle);
+  --color-habit-circle-skipped: var(--bg-habit-circle-skipped);
+  --color-habit-circle-completed: var(--bg-habit-circle-completed);
+  --color-habit-circle-text: var(--text-habit-circle);
+  --color-habit-circle-text-skipped: var(--text-habit-circle-skipped);
+  --color-habit-circle-text-completed: var(--text-habit-circle-completed);
+
+  /* --- History Page --- */
+  --color-history-card: var(--bg-history-card);
+  --color-history-card-text: var(--text-history-card);
+  --color-history-card-border: var(--border-history-card);
+
+  /* --- Menu --- */
+  --color-menu-section: var(--bg-menu-section);
+  --color-menu-section-border: var(--border-menu-section);
+  --color-menu-section-text: var(--text-menu-section);
+  --color-menu-button: var(--bg-menu-button);
+  --color-menu-button-text: var(--text-menu-button);
+  --color-menu-button-border: var(--border-menu-button);
+  --color-menu-button-icon-text: var(--text-menu-button-icon);
+  --color-menu-button-icon-bg: var(--bg-menu-button-icon);
+  --color-menu-button-title: var(--text-menu-button-title);
+  --color-menu-button-subtitle: var(--text-menu-button-subtitle);
+  
+  --color-menu-toggle: var(--bg-menu-toggle-button);
+  --color-toggle-core: var(--bg-toggle-button-core);
+  --color-toggle-active: var(--bg-toggle-button-active);
+  --color-toggle-core-active: var(--bg-toggle-button-core-active);
+  --color-menu-toggle-border: var(--border-menu-toggle-button);
+
+  --color-menu-button-disabled: var(--bg-menu-button-disabled);
+  --color-menu-button-disabled-border: var(--border-menu-button-disabled);
+  --color-menu-button-disabled-text: var(--text-menu-button-disabled);
+
+  --color-menu-button-danger: var(--bg-menu-button-danger);
+  --color-menu-button-danger-border: var(--border-menu-button-danger);
+  --color-menu-button-danger-text: var(--text-menu-button-danger);
+  
+  --color-type: var(--bg-type);
+  --color-type-active: var(--bg-type-active);
+  --color-type-text: var(--text-type);
+  --color-type-text-active: var(--text-type-active);
+  --color-type-border: var(--border-type);
+  --color-type-border-active: var(--border-type-active);
+
+  /* --- Manage Habit (Toggle) --- */
+  --color-toggle: var(--bg-toggle);
+  --color-toggle-text: var(--text-toggle);
+  --color-toggle-border: var(--border-toggle);
+  --color-toggle-active: var(--bg-toggle-active);
+  --color-toggle-text-active: var(--text-toggle-active);
+  --color-toggle-border-active: var(--border-toggle-active);
+
+  /* --- Manage Habit (Icon Buttons) --- */
+  --color-icon-btn: var(--bg-icon-btn);
+  --color-icon-btn-border: var(--border-icon-btn);
+  --color-icon-btn-text: var(--text-icon-btn);
+  --color-icon-btn-active: var(--bg-icon-btn-active);
+  --color-icon-btn-border-active: var(--border-icon-btn-active);
+  --color-icon-btn-text-active: var(--text-icon-btn-active);
+  
+}
+
+html, body {
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.backdrop-fade {
+  animation: fade-in 0.2s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+:root, [data-theme="dark"]  {
+  /* General */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --bg-app: #09090b;
+  --text-header-title: #f5f3ff;
+  --text-header-subtitle: #9c9c9c;
+  --border-radius-cards: 12px;
+  --border-radius-input: 8px;
+  --border-radius-button: 8px;
+  --text-section-title: #a1a1aa;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
+  --text-on-accent: #ffffff;
+  --text-accent: var(--color-accent);
+  --bg-accent: var(--color-accent);
+  --bg-primary: #0f0a15;
+  --bg-input: #18181b;
+  --text-input: #f5f3ff;
+  --border-input: #333336;
+
+  /* Button */
+
+  --bg-button: #18181b;
+  --bg-button-disabled: transparent;
+  --bg-button-focus: var(--color-accent);
+
+  --text-button: #fafafa;
+  --text-button-disabled: #52525b;
+  --text-button-focus: #fafafa;
+
+  --border-button: #27272a;
+  --border-button-active: var(--color-accent);
+  --border-button-disabled: #27272a;
+
+  /* Notifications */
+  --bg-notification-success: #0a7a5d;
+  --text-notification-success: #ffffff;
+  --bg-notification-error: #770626;
+  --text-notification-error: #fffcfc;
+  --bg-notification-info: #2e287a;
+  --text-notification-info: #ffffff;
+  --border-notification: rgba(255, 255, 255, 0.1);
+
+  /* Navigation */
+  --bg-nav: #000000;
+  --border-nav: #0f0a15;
+  --text-nav: #ffffff;
+  --text-nav-selected: #a78bfa;
+  --bg-nav-button: transparent;
+  --bg-nav-button-selected: rgba(124, 58, 237, 0.1);
+
+  /* Dashboard */
+  --bg-dashboard-btn: transparent;
+
+  /* Dashboard Habit Card */
+  --bg-dashboard-card: #121214;
+  --bg-dashboard-icon-background: #1e1b4b;
+  --text-dashboard-icon-color: #a78bfa;
+  --text-dashboard-habit-title: #f5f3ff;
+  --text-dashboard-habit-subtitle: #858586;
+  --bg-dashboard-habit-progress-background: #050505;
+  --text-dashboard-habit-button: #f5f3ff;
+  --border-dashboard-habit-base: #303035;
+  --border-dashboard-habit-skipped: #39373d48;
+  --border-dashboard-habit-completed: #39f7696b;
+  --border-radius-dashboard-habit: 12px;
+
+  /* Numpad Modal */
+  --bg-numpad: #121214;
+  --text-numpad-header: #f5f3ff;
+  --bg-numpad-date-selector: #0f0a15;
+  --text-numpad-date-selector: #a78bfa;
+  --bg-numpad-value: #000000;
+  --text-numpad-value: #f5f3ff;
+  --border-numpad-value: #ffffff;
+  --bg-numpad-button: #18181b;
+  --text-numpad-button: #ffffff;
+  --border-numpad-button: #88888a56;
+  --border-skip-btn: #1e1b4b;
+  --border-skip-btn-disabled: #0f0a15;
+  --border-skip-enabled: #4c1d95;
+  --text-skip: var(--color-accent);;
+  --text-ski-disabled: #1e1b4b;
+  --text-skip-enabled: #f5f3ff;
+  --bg-skip: #0f0a15;
+  --bg-skip-disabled: #050505;
+  --bg-skip-enabled: #1e1b4b;
+  --text-save: var(--color-accent);
+  --text-save-enabled: #ffffff;
+  --text-save-disabled: #1e1b4b;
+  --border-save: var(--color-accent);
+  --border-save-enabled: var(--color-accent);
+  --border-save-disabled: #0f0a15;
+  --bg-save: var(--color-accent);
+  --bg-save-disabled: #1e1c20;
+  --bg-save-enabled: var(--color-accent);
+
+  /* Boolean Modal */
+  --bg-boolean: #050505;
+  --text-boolean-header: #f5f3ff;
+  --border-boolean-date-selector: #27272a;
+  --bg-boolean-date-selector: #121214;
+  --text-boolean-date-selector: var(--color-accent);
+  --border-boolean-status: #1e1b4b;
+  --bg-boolean-status: #000000;
+  --bg-boolean-status-yes: #064e3b;
+  --bg-boolean-status-no: #4c0519;
+  --bg-boolean-status-skipped: #1e1b4b;
+  --text-boolean-status: var(--color-accent);;
+  --text-boolean-status-yes: #34d399;
+  --text-boolean-status-no: #fb7185;
+  --text-boolean-status-skipped: var(--color-accent);
+
+  --border-boolean-yes-btn: #064e3b;
+  --bg-boolean-yes-btn: #064e3b;
+  --text-boolean-yes-btn: #0bd6a0;
+  --bg-boolean-yes-btn-active: #059669;
+
+  --border-boolean-no-btn: #4c0519;
+  --bg-boolean-no-btn: #4c0519;
+  --text-boolean-no-btn: #fb7185;
+  --bg-boolean-no-btn-active: #e11d48;
+
+  --border-boolean-skip-btn: #1e1b4b;
+  --bg-boolean-skip-btn: #230547;
+  --text-boolean-skip-btn: #a78bfa;
+  --bg-boolean-skip-btn-active: #1e1b4b;
+
+  --bg-boolean-save: var(--color-accent);
+  --border-boolean-save: var(--color-accent);
+  --text-boolean-save: #ffffff;
+
+  /* Stats Page */
+  --bg-stats-toggle: #000000;
+  --border-stats-toggle: #ffffff2f;
+  --bg-stats-button: transparent;
+  --bg-stats-button-selected: #272727;
+  --text-stats-button: var(--color-accent);
+  --text-stats-button-selected: #f5f3ff;
+  --border-stats-date: #ffffff1a;
+  --bg-stats-date: #0f0f0f;
+  --text-stats-date: var(--color-accent);
+
+  --bg-stats-general-card: #131313;
+  --text-stats-general-card: #f5f3ff;
+  --border-stats-general-card: #ffffff10;
+
+  --bg-habit-stats-card: #171718;
+  --text-habit-stats-card: #f5f3ff;
+  --border-habit-stats-card: #ffffff1e;
+  --bg-habit-circle: #202020;
+  --bg-habit-circle-skipped: #2e1065;
+  --bg-habit-circle-completed: var(--color-accent);
+  --text-habit-circle: var(--color-accent);;
+  --text-habit-circle-skipped: #a78bfa;
+  --text-habit-circle-completed: #ffffff;
+
+  /* History Page */
+  --bg-history-card: #161616;
+  --text-history-card: #f5f3ff;
+  --border-history-card: #ffffff23;
+
+  /* Menu */
+  --bg-menu-section: #141414;
+  --border-menu-section: #ffffff13;
+  --text-menu-section: #ffffff;
+
+  --bg-menu-button: #111111;
+  --text-menu-button: #f5f3ff;
+  --border-menu-button: #ffffff;
+  --text-menu-button-icon: #ffffff;
+  --bg-menu-button-icon: #2c2c2c;
+  --text-menu-button-title: #f5f3ff;
+  --text-menu-button-subtitle: #4e4e4e;
+  
+  --bg-toggle-button: #4d4d4d;
+  --bg-toggle-button-core: #f8f8f8;
+  --bg-toggle-button-active: #4cff64;
+  --bg-toggle-button-core-active: var(--color-accent);
+  --border-toggle-button: #ffffff;
+
+  --bg-menu-button-disabled: #050505;
+  --border-menu-button-disabled: #0f0a15;
+  --text-menu-button-disabled: #1e1b4b;
+
+  --bg-menu-button-danger: #4c0519;
+  --border-menu-button-danger: #991b1b;
+  --text-menu-button-danger: #fb7185;
+
+  /* Manage Habit */
+
+  --bg-type: transparent;
+  --bg-type-active: var(--color-accent);
+  --text-type: white;
+  --text-type-active: white;
+  --border-type: rgba(255, 255, 255, 0.247);
+  --border-type-active: var(--color-accent);
+
+  --bg-toggle: transparent;
+  --text-toggle: white;
+  --border-toggle: rgba(255, 255, 255, 0.247);
+  --bg-toggle-active: var(--color-accent);
+  --text-toggle-active: white;
+  --border-toggle-active: var(--color-accent);
+
+  --bg-icon-btn: transparent;
+  --border-icon-btn: rgba(255, 255, 255, 0.2);
+  --text-icon-btn: white;
+  --bg-icon-btn-active: var(--color-accent);
+  --border-icon-btn-active: transparent;
+  --text-icon-btn-active: white;
+}
+
+[data-theme="light"] {
+  /* General */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --bg-app: #fbfbfe;
+  --text-header-title: #09090b;
+  --text-header-subtitle: #71717a;
+  --border-radius-cards: 12px;
+  --border-radius-input: 8px;
+  --border-radius-button: 8px;
+  --text-section-title: #71717a;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --text-on-accent: #ffffff;
+  --text-accent: var(--color-accent);
+  --bg-accent: var(--color-accent);
+  --bg-primary: #ffffff;
+  --bg-input: #f4f4f5;
+  --text-input: #09090b;
+  --border-input: #0303034f;
+
+  /* Button */
+  --bg-button: #ffffff;
+  --bg-button-disabled: #f4f4f5;
+  --bg-button-focus: rgba(124, 58, 237, 0.1);
+
+  --text-button: #070707;
+  --text-button-disabled: #a1a1aa;
+  --text-button-focus: var(--color-accent);
+
+  --border-button: #e4e4e7;
+  --border-button-active: var(--color-accent);
+  --border-button-disabled: #f4f4f5;
+
+  /* Navigation */
+  --bg-nav: #ffffff;
+  --border-nav: #f4f4f5;
+  --text-nav: #71717a;
+  --text-nav-selected: var(--color-accent);
+  --bg-nav-button: transparent;
+  --bg-nav-button-selected: rgba(124, 58, 237, 0.05);
+
+  /* Dashboard Habit Card */
+  --bg-dashboard-card: #ffffff;
+  --bg-dashboard-icon-background: #ede9fe;
+  --text-dashboard-icon-color: var(--color-accent);
+  --text-dashboard-habit-title: #18181b;
+  --text-dashboard-habit-subtitle: #71717a;
+  --bg-dashboard-habit-progress-background: #f4f4f5;
+  --text-dashboard-habit-button: #18181b;
+  --border-dashboard-habit-base: #28282967;
+  --border-dashboard-habit-skipped: #0000004d;
+  --border-dashboard-habit-completed: #10b981;
+  --border-radius-dashboard-habit: 12px;
+
+  /* Numpad Modal */
+  --bg-numpad: #ffffff;
+  --text-numpad-header: #18181b;
+  --bg-numpad-date-selector: #f4f4f5;
+  --text-numpad-date-selector: var(--color-accent);
+  --bg-numpad-value: #fbfbfe;
+  --text-numpad-value: #18181b;
+  --border-numpad-value: #e4e4e7;
+  --bg-numpad-button: #ffffff;
+  --text-numpad-button: #18181b;
+  --border-numpad-button: #0e0e0e49;
+
+  /* Button Logic (Skip/Save) */
+  --bg-skip: #f4f4f5;
+  --bg-skip-disabled: #fafafa;
+  --bg-skip-enabled: #ede9fe;
+  --text-skip: #71717a;
+  --text-skip-enabled: var(--color-accent);
+  --border-skip-enabled: #ddd6fe;
+
+  --bg-save: var(--color-accent);
+  --bg-save-disabled: #e4e4e7;
+  --bg-save-enabled: var(--color-accent);
+  --text-save: #ffffff;
+  --text-save-enabled: #ffffff;
+  --text-save-disabled: #a1a1aa;
+  --border-save-enabled: var(--color-accent);
+  --border-save-disabled: #0f0a15;
+  --border-save: black;
+
+  /* Boolean Modal */
+  --border-boolean-date-selector: #2b2b2c3d;
+  --bg-boolean-date-selector: #fafafa;
+  --text-boolean-date-selector: #000000;
+  --bg-boolean: #ffffff;
+  --text-boolean-header: #18181b;
+  --bg-boolean-status-yes: #dcfce7;
+  --bg-boolean-status-no: #fee2e2;
+  --bg-boolean-status-skipped: #f4f4f5;
+  --text-boolean-status-yes: #15803d;
+  --text-boolean-status-no: #b91c1c;
+  --text-boolean-status-skipped: #71717a;
+  --bg-boolean-save: var(--color-accent);
+  --border-boolean-save: #0303034f;
+  --text-boolean-save: #000000;
+
+  /* Stats Page */
+  --bg-stats-toggle: #f4f4f5;
+  --border-stats-toggle: #03030344;
+  --bg-stats-button-selected: #a5a5a5;
+  --text-stats-button: #71717a;
+  --text-stats-button-selected: #000000;
+  --bg-stats-date: #fff8f8;
+  --text-stats-date: #000000;
+
+  --bg-stats-general-card: #ffffff;
+  --text-stats-general-card: #18181b;
+  --border-stats-general-card: #00000070;
+
+  --bg-habit-stats-card: #ffffff;
+  --bg-habit-circle: #00000044;
+  --bg-habit-circle-skipped: #ddd6fe;
+  --bg-habit-circle-completed: var(--color-accent);
+  --text-habit-circle: #a1a1aa;
+  --text-habit-circle-skipped: var(--color-accent);
+  --text-habit-circle-completed: #ffffff;
+
+  /* History Page */
+  --bg-history-card: #eeebeb;
+  --border-history-card: #00000044;
+  --text-history-card: black;
+
+  /* Menu */
+  --bg-menu-section: #ffffff;
+  --border-menu-section: #0c0c0c41;
+  --bg-menu-button: #ffffff;
+  --bg-menu-button-icon: #f4f4f5;
+  --text-menu-button-title: #18181b;
+  --text-menu-button-subtitle: #71717a;
+  
+  --bg-menu-toggle-button: #3333331f;
+  --bg-toggle-button-core: #696969;
+  --bg-toggle-button-active: #10b981;
+  --bg-toggle-button-core-active: #ffffff;
+  --border-menu-toggle-button: #464646;
+
+  --bg-menu-button-danger: #fee2e2;
+  --text-menu-button-danger: #b91c1c;
+  --border-menu-button-danger: #fecaca;
+
+  /* Manage Habit Types */
+  --bg-type: #f4f4f5;
+  --bg-type-active: #ede9fe;
+  --text-type: #71717a;
+  --text-type-active: var(--color-accent);
+  --border-type: #e4e4e7;
+  --border-type-active: var(--color-accent);
+}
+
+[data-theme="amoled"] {
+  --bg-app: black;
+}
