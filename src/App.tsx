@@ -37,7 +37,9 @@ const router = createBrowserRouter([
       { path: 'about', element: <AboutPage /> },
     ],
   },
-]);
+], {
+  basename: '/arc/'
+});
 
 export default function App() {
   return (
