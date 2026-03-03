@@ -3,7 +3,6 @@ import { format, isToday, isYesterday, startOfDay } from 'date-fns';
 import { Trash2, History as HistoryIcon } from 'lucide-react';
 import { db } from '../db/db';
 import { Link } from 'react-router-dom';
-import { clsx } from 'clsx';
 
 export default function History() {
   const logs = useLiveQuery(() => db.logs.reverse().toArray());

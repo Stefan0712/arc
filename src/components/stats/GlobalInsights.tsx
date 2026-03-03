@@ -1,4 +1,4 @@
-import { Target, Activity, Zap, Calendar, type LucideIcon } from 'lucide-react';
+import { Target, Activity, Zap, Calendar } from 'lucide-react';
 import { isSameDay, startOfDay } from 'date-fns';
 import type { Habit, Log } from '../../types/types';
 
