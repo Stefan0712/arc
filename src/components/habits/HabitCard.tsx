@@ -75,7 +75,7 @@ export default function HabitCard({ habit, stats }: HabitCardProps) {
               </h3>
               <p className="text-dashboard-habit-subtitle text-sm">
                 {status === 'SKIPPED' ? 'Skipped' : 
-                 status === 'FAILED' ? `Limit Exceeded ${habit.target > 0 && stats.sum ? `by ${stats.sum - (habit.target || 0)} ${habit.unit}` : null}` : getSubtitle()}
+                 status === 'FAILED' ? `Limit Exceeded ${habit.target && habit.target > 0 && stats.sum ? `by ${stats.sum - (habit.target || 0)} ${habit.unit}` : null}` : getSubtitle()}
               </p>
             </div>
           </div>
