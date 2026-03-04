@@ -1,6 +1,7 @@
 
 
 export type HabbitType = 'numeric' | 'boolean';
+export type ComparisonType = 'less' | 'less_equal' | 'equal' | 'more' | 'more_equal';
 
 export interface Habit {
   _id: string;
@@ -16,6 +17,7 @@ export interface Habit {
   type: HabbitType;
   allowOneLogPerDay?: boolean;
   allowedSkipsPerWeek?: number;
+  comparison: ComparisonType;
 }
 
 export interface Log {

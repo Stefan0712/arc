@@ -2,7 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 
 import AppLayout from './components/layout/AppLayout';
 import Dashboard from './pages/Dashboard';
-import ManageHabit from './pages/ManageHabbit';
+import ManageHabit from './pages/ManageHabit';
 import Habit from './pages/Habit';
 import History from './pages/History';
 import Stats from './pages/Stats';

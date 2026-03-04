@@ -3,11 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save } from 'lucide-react';
 import { db } from '../db/db';
 import { clsx } from 'clsx';
-import type { HabbitType } from '../types/types';
+import { type ComparisonType, type HabbitType } from '../types/types';
 import IconPicker from '../components/habits/IconPicker';
 import ColorPicker from '../components/habits/ColorPicker';
 import DefaultValuesInput from '../components/habits/DefaultValues';
 import { ObjectId } from 'bson';
+import ComparisonPicker from '../components/habits/ComparisonPicker';
+import { HABIT_COLORS } from '../utils/palettes';
 
 
 export default function ManageHabit() {
@@ -19,13 +21,14 @@ export default function ManageHabit() {
   // Form State
   const [title, setTitle] = useState('');
   const [type, setType] = useState<HabbitType>('numeric');
-  const [color, setColor] = useState<string>('blue');
+  const [color, setColor] = useState<string>(HABIT_COLORS[0]);
   const [icon, setIcon] = useState('Activity');
-  const [target, setTarget] = useState('');
+  const [target, setTarget] = useState(0);
   const [unit, setUnit] = useState('');
   const [defaultValues, setDefaultValues] = useState<number[]>([]);
   const [allowOneLogPerDay, setAllowOneLogPerDay] = useState(false);
   const [allowedSkips, setAllowedSkips] = useState(0);
+  const [comparison, setComparison] = useState<ComparisonType>('equal');
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,11 +41,12 @@ export default function ManageHabit() {
       color,
       icon,
       archived: 0,
+      comparison,
       allowOneLogPerDay: type === 'boolean' ? true : allowOneLogPerDay,
       allowedSkipsPerWeek: allowedSkips,
       createdAt: new Date(),
       ...(type === 'numeric' && {
-        target: Number(target),
+        target,
         unit: unit.trim() || 'times',
         defaultValues: defaultValues.length > 0 ? defaultValues : undefined,
       }),
@@ -51,7 +55,7 @@ export default function ManageHabit() {
     navigate('/');
   };
 
-  // Inside ManageHabit component:
+  // Populate data if there is an id
   useEffect(() => {
     if (id && isEditing) {
       db.habits.get(id).then(habit => {
@@ -60,7 +64,7 @@ export default function ManageHabit() {
           setType(habit.type);
           setIcon(habit.icon);
           setColor(habit.color);
-          setTarget(habit.target?.toString() || '');
+          setTarget(habit.target ?? 0);
           setUnit(habit.unit || '');
           setDefaultValues(habit.defaultValues || []);
           setAllowOneLogPerDay(habit.allowOneLogPerDay || false);
@@ -81,6 +85,7 @@ export default function ManageHabit() {
         <button 
           type="submit"
           className="mt-auto flex items-center justify-center gap-2 bg-accent hover:bg-accent text-on-accent p-4 rounded-button font-bold transition-colors active:scale-95"
+          onClick={handleSave}
         >
           <Save size={20} />
         </button>
@@ -119,6 +124,7 @@ export default function ManageHabit() {
             ))}
           </div>
         </div>
+        <ComparisonPicker habitType={type} target={target} setTarget={setTarget} comparison={comparison} setComparison={(type: ComparisonType)=>setComparison(type)} />
         <div className="flex flex-col gap-2">
           <label className="text-sm text-secondary">Settings</label>
           <button
@@ -195,7 +201,7 @@ export default function ManageHabit() {
                 <input 
                   type="number" 
                   value={target}
-                  onChange={(e) => setTarget(e.target.value)}
+                  onChange={(e) => setTarget(parseInt(e.target.value))}
                   placeholder="e.g., 2000"
                   className="bg-input border border-input-border rounded-input p-3 text-input-text focus:outline-none focus:border-accent"
                 />
