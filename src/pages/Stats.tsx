@@ -65,6 +65,7 @@ export default function Stats() {
             habit={habit} 
             logs={logs} 
             daysInInterval={daysInInterval}
+            viewType={viewType}
           />
         ))}
       </div>

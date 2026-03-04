@@ -1,16 +1,17 @@
 import { useMemo } from 'react';
-import { isSameDay, isAfter, startOfDay } from 'date-fns';
+import { isSameDay, isAfter, startOfDay, format } from 'date-fns';
 import type { Habit, Log } from '../../types/types';
 import { clsx } from 'clsx';
-import { Check, FastForward } from 'lucide-react'; // Added FastForward
+import { Check, FastForward } from 'lucide-react';
 
 interface HabitStatsCardProps {
   habit: Habit;
   logs: Log[];
   daysInInterval: Date[];
+  viewType: string;
 }
 
-export default function HabitStatsCard({ habit, logs, daysInInterval }: HabitStatsCardProps) {
+export default function HabitStatsCard({ habit, logs, daysInInterval, viewType }: HabitStatsCardProps) {
   const habitLogs = useMemo(() => logs.filter(l => l.habitId === habit._id), [logs, habit._id]);
   const today = startOfDay(new Date());
 
@@ -31,7 +32,6 @@ export default function HabitStatsCard({ habit, logs, daysInInterval }: HabitSta
   const relevantDaysCount = daysInInterval.filter(day => !isAfter(day, today)).length;
   const radius = 16;
   const circumference = 2 * Math.PI * radius;
-
   return (
     <div className="bg-habit-stats-card border border-habit-stats-card-border p-4 rounded-cards flex flex-col gap-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
       <div className="flex justify-between items-start">
@@ -130,7 +130,7 @@ export default function HabitStatsCard({ habit, logs, daysInInterval }: HabitSta
                     <Check size={16} className={habit.type === 'boolean' || !habit.target ? "text-accent" : "text-accent"} strokeWidth={3} />
                   ) : (
                     <span className="text-[14px] font-black text-zinc-600 group-hover:text-zinc-300 transition-colors">
-                      {i + 1}
+                      {viewType === 'month' ? i+1 : format(day, 'EEEEE')}
                     </span>
                   )}
                 </div>
