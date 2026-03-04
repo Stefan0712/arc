@@ -9,20 +9,21 @@ export interface ProgressStat {
 
 export type HabitDailyStatus = 'COMPLETED' | 'SKIPPED' | 'PARTIAL' | 'PENDING';
 
+// Get a status to decide how to render the UI
 export const getHabitDailyStatus = (habit: Habit, stats?: ProgressStat): HabitDailyStatus => {
   if (!stats) return 'PENDING';
 
-  // Did they finish it? (Always overrides a skip)
+  // If the target is met, it is market as completed, even if it was skipped. Complete status > skipped status
   const isTargetMet = habit.type === 'boolean' 
     ? stats.latest === 1 
     : (habit.target !== undefined && stats.sum >= habit.target);
 
   if (isTargetMet) return 'COMPLETED';
 
-  // If not finished, did they log a skip?
+  // If not finished, check if it's skipped
   if (stats.isSkipped) return 'SKIPPED';
 
-  // If no skip and not finished, did they log something?
+  // If no skip and not finished, then it it's still in progress
   if (stats.count > 0) return 'PARTIAL';
 
   // Default state

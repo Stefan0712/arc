@@ -20,7 +20,6 @@ export default function App() {
   return (
     <ThemeProvider>
       <NotificationContainer />
-      
       <HashRouter>
         <Routes>
           <Route path="/" element={<AppLayout />}>

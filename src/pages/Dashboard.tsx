@@ -19,6 +19,7 @@ export default function Dashboard() {
     () => db.habits.toArray()
   );
 
+  // Fetch all logs recorded today
   const todayLogs = useLiveQuery(
     () => {
       const now = new Date();
@@ -28,7 +29,7 @@ export default function Dashboard() {
         .toArray();
     }
   );
-
+  // Takes the array of raw logs and extract stats for each habit
   const progressStats = useMemo(() => {
     return (todayLogs || []).reduce((acc, log) => {
       if (!acc[log.habitId]) {
@@ -70,6 +71,7 @@ export default function Dashboard() {
     return { sortedHabits: sorted, remainingCount: remaining };
   }, [habits, progressStats]);
 
+  // Updates tab title dynamically based on the number of habits left
   useEffect(() => {
     if (remainingCount > 0) {
       document.title = `(${remainingCount}) Habits Left`;

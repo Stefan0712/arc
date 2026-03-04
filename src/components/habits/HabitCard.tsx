@@ -11,33 +11,20 @@ interface HabitCardProps {
   stats: ProgressStat;
 }
 
-const colors = [
-  'red', 'orange', 'amber', 'green', 'emerald', 'teal', 'cyan', 
-  'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'
-];
-
-const colorMap: Record<string, string> = colors.reduce((acc, color) => ({
-  ...acc,
-  [color]: `bg-${color}-500/20 text-${color}-400`
-}), {});
-
-const progressColorMap: Record<string, string> = colors.reduce((acc, color) => ({
-  ...acc,
-  [color]: `bg-${color}-500`
-}), {});
-
 export default function HabitCard({ habit, stats }: HabitCardProps) {
   const { openLogModal } = useUIStore();
+  
   // Casting the entire library to a searchable Record of LucideIcons
   const IconComponent = (Icons as unknown as Record<string, LucideIcon>)[habit.icon] || Icons.Circle;
   
   const status = getHabitDailyStatus(habit, stats);
 
   const handleLogClick = async (e: React.MouseEvent) => {
-    console.log(habit)
     e.stopPropagation();
     openLogModal(habit._id!);
   };
+
+
   const getSubtitle = () => {
     if (habit.type === 'boolean') {
       if (stats.count > 0) {
@@ -68,8 +55,7 @@ export default function HabitCard({ habit, stats }: HabitCardProps) {
             <div className={clsx(
               'p-2.5 rounded-xl transition-colors', 
               status === 'COMPLETED' ? 'border-dashboard-habit-completed text-completed' : 
-              status === 'SKIPPED' ? 'bg-skipped text-skipped' : 
-              (colorMap[habit.color] || colorMap.blue)
+              status === 'SKIPPED' ? 'bg-skipped text-skipped' : ''
             )}>
               <IconComponent size={24} strokeWidth={2.5} />
             </div>
@@ -116,11 +102,7 @@ export default function HabitCard({ habit, stats }: HabitCardProps) {
       {(status === 'PENDING' || status === 'PARTIAL') && habit.type === 'numeric' && habit.target !== undefined && habit.target > 0 && (
         <div className="h-2 w-full bg-zinc-800/50 rounded-full overflow-hidden mt-1">
           <div 
-            className={clsx(
-              'h-full transition-all duration-700 ease-out', 
-              progressColorMap[habit.color] || progressColorMap.blue
-            )}
-            style={{ width: `${Math.min(((stats?.sum || 0) / habit.target) * 100, 100)}%`}}
+            className='h-full transition-all duration-700 ease-out' style={{backgroundColor: habit.color, width: `${Math.min(((stats?.sum || 0) / habit.target) * 100, 100)}%`}}
           />
         </div>
       )}

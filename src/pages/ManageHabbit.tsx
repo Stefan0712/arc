@@ -77,7 +77,13 @@ export default function ManageHabit() {
           <ArrowLeft size={24} />
         </button>
         <h1 className="text-xl font-bold">{isEditing ? 'Edit Habit' : 'New Habit'}</h1>
-        <div className="w-10" />
+        {/* Save Button */}
+        <button 
+          type="submit"
+          className="mt-auto flex items-center justify-center gap-2 bg-accent hover:bg-accent text-on-accent p-4 rounded-button font-bold transition-colors active:scale-95"
+        >
+          <Save size={20} />
+        </button>
       </header>
 
       <form onSubmit={handleSave} className="p-4 flex flex-col gap-6 flex-1 overflow-y-auto">
@@ -210,14 +216,6 @@ export default function ManageHabit() {
         )}
         <IconPicker selectedIcon={icon} onChange={setIcon} />
         <ColorPicker selectedColor={color} onChange={setColor} />
-        {/* Save Button */}
-        <button 
-          type="submit"
-          className="mt-auto flex items-center justify-center gap-2 bg-accent hover:bg-accent text-on-accent p-4 rounded-button font-bold transition-colors active:scale-95"
-        >
-          <Save size={20} />
-          Save Habit
-        </button>
       </form>
     </div>
   );
