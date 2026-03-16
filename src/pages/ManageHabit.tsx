@@ -75,7 +75,7 @@ export default function ManageHabit() {
   }, [id]);
 
   return (
-    <div className="flex flex-col h-full w-full overflow-hidden bg-app text-primary pb-8">
+    <div className="grid grid-rows-[auto_1fr] h-full w-full overflow-hidden bg-app text-primary pb-8">
       <header className="flex items-center justify-between p-4 text-header">
         <button onClick={() => navigate(-1)} className="p-2 hover:text-white">
           <ArrowLeft size={24} />
@@ -91,7 +91,7 @@ export default function ManageHabit() {
         </button>
       </header>
 
-      <form onSubmit={handleSave} className="p-4 flex flex-col gap-6 flex-1 overflow-y-auto">
+      <form onSubmit={handleSave} className="p-4 flex flex-col gap-6 flex-1 overflow-y-auto scrollbar-hide">
         {/* Title */}
         <div className="flex flex-col gap-2">
           <label className="text-sm text-secondary">Habit Name</label>

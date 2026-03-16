@@ -14,7 +14,7 @@ export default function AppLayout() {
 
 
   return (
-    <div className="h-screen w-screen grid grid-rows-[1fr_60px] bg-app text-primary font-theme overflow-hidden">
+    <div className="h-full w-full grid grid-rows-[1fr_60px] bg-app text-primary font-theme overflow-hidden">
       <Outlet />
       <BottomNav />
 

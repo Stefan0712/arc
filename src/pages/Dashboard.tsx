@@ -83,7 +83,7 @@ export default function Dashboard() {
   }, [remainingCount, habits]);
 
   return (
-    <div className="grid grid-rows-[50px_1fr] gap-6 pt-2 h-screen w-full p-4">
+    <div className="grid grid-rows-[50px_1fr] gap-6 pt-2 h-full w-full p-4">
       
       {/* Header */}
       <header className="flex items-center justify-between">
@@ -102,11 +102,11 @@ export default function Dashboard() {
 
       {/* Habits List */}
       {!habits ? (
-        <div className="flex justify-center mt-10 h-full">
+        <div className="flex justify-center items-center w-full h-full">
           <div className="w-8 h-8 border-4 border-subtle border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : habits.length === 0 ? (
-        <div className="flex flex-col items-center justify-center h-full mt-20 text-muted gap-4">
+        <div className="flex flex-col items-center justify-center h-full w-full text-muted gap-4">
           <p>No habits yet.</p>
           <Link to="/habit/new" className="text-bold hover:text-accent font-medium">
             Create your first goal

@@ -9,7 +9,7 @@ export default function ColorPicker({ selectedColor, onChange }: ColorPickerProp
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm text-gray-400">Color</label>
-      <div className="grid grid-rows-2 grid-flow-col gap-3 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden snap-x">
+      <div className="grid grid-rows-2 grid-flow-col gap-3 overflow-x-auto pb-2 snap-x scrollbar-hide">
         {HABIT_COLORS.map((color) => (
           <button
             key={color}

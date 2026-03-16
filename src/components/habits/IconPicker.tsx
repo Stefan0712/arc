@@ -17,7 +17,7 @@ export default function IconPicker({ selectedIcon, onChange }: IconPickerProps) 
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm text-secondary">Icon</label>
-      <div className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden snap-x">
+      <div className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x">
         {iconNames.map((iconName) => {
           const IconComponent = (Icons as any)[iconName];
           if (!IconComponent) return null; 
